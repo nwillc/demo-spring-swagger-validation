@@ -9,12 +9,19 @@ import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
 import springfox.documentation.swagger2.annotations.EnableSwagger2
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean
+import org.springframework.validation.beanvalidation.MethodValidationPostProcessor
+
+
+
+
 
 
 
 @Configuration
 @EnableSwagger2
 class SwaggerConfig : WebMvcConfigurer {
+
     @Bean
     fun api(): Docket = Docket(DocumentationType.SWAGGER_2)
             .select()

@@ -2,13 +2,43 @@ GET {{endpoint}}/ping/{{id}}
 
 > {%
  client.test("Request executed successfully", function() {
-        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.status === 200, "Response status is not 500");
     });
  %}
 
 ###
 
 GET {{endpoint}}/ping/0
+
+> {%
+ client.test("Request executed successfully", function() {
+        client.assert(response.status === 500, "Response status is not 500");
+    });
+ %}
+
+###
+
+POST {{endpoint}}/ping
+Content-Type: application/json
+
+{
+  "ping": {{id}}
+}
+
+> {%
+ client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+ %}
+
+###
+
+POST {{endpoint}}/ping
+Content-Type: application/json
+
+{
+  "ping": 0
+}
 
 > {%
  client.test("Request executed successfully", function() {
