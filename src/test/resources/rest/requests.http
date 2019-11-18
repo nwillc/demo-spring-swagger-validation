@@ -48,6 +48,37 @@ Content-Type: application/json
 
 ###
 
+
+POST {{endpoint}}/kping
+Content-Type: application/json
+
+{
+  "ping": {{id}}
+}
+
+> {%
+ client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+ %}
+
+###
+
+POST {{endpoint}}/kping
+Content-Type: application/json
+
+{
+  "ping": 0
+}
+
+> {%
+ client.test("Request executed successfully", function() {
+        client.assert(response.status === 400, "Response status is not 400");
+    });
+ %}
+
+###
+
 GET {{endpoint}}/v2/api-docs
 
 ###

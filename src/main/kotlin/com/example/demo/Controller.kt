@@ -22,6 +22,14 @@ class Controller {
     @PostMapping("/ping", produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun ping(@Valid @RequestBody ping: Ping): ResponseEntity<Pong>
             = ResponseEntity(Pong(ping.ping), HttpStatus.OK)
+
+    @PostMapping("/kping", produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
+    fun kPing(@Valid @RequestBody ping: KPing): ResponseEntity<Pong>
+            = ResponseEntity(Pong(ping.ping), HttpStatus.OK)
 }
 
 data class Pong(@Min(1) val pong: Int)
+data class KPing(
+    @Min(value = 1, message = "Must be at least 1")
+    val ping: Int
+)
