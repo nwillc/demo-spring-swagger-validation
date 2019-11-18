@@ -18,7 +18,7 @@ GET {{endpoint}}/ping/0
 
 ###
 
-POST {{endpoint}}/ping
+POST {{endpoint}}/ping1
 Content-Type: application/json
 
 {
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 ###
 
-POST {{endpoint}}/ping
+POST {{endpoint}}/ping1
 Content-Type: application/json
 
 {
@@ -49,7 +49,7 @@ Content-Type: application/json
 ###
 
 
-POST {{endpoint}}/kping
+POST {{endpoint}}/ping2
 Content-Type: application/json
 
 {
@@ -64,7 +64,7 @@ Content-Type: application/json
 
 ###
 
-POST {{endpoint}}/kping
+POST {{endpoint}}/ping2
 Content-Type: application/json
 
 {

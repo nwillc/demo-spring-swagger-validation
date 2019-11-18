@@ -19,17 +19,23 @@ class Controller {
     fun ping(@Valid @Min(1) @PathVariable("id") id: Int): ResponseEntity<Pong>
             = ResponseEntity(Pong(id), HttpStatus.OK)
 
-    @PostMapping("/ping", produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun ping(@Valid @RequestBody ping: Ping): ResponseEntity<Pong>
+    @PostMapping("/ping1", produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
+    fun ping1(@Valid @RequestBody ping: Ping1): ResponseEntity<Pong>
             = ResponseEntity(Pong(ping.ping), HttpStatus.OK)
 
-    @PostMapping("/kping", produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun kPing(@Valid @RequestBody ping: KPing): ResponseEntity<Pong>
+    @PostMapping("/ping2", produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
+    fun ping2(@Valid @RequestBody ping: Ping2): ResponseEntity<Pong>
             = ResponseEntity(Pong(ping.ping), HttpStatus.OK)
 }
 
 data class Pong(@Min(1) val pong: Int)
-data class KPing(
+
+data class Ping1(
     @Min(value = 1, message = "Must be at least 1")
-    val ping: Int
+    var ping: Int = 0
 )
+
+class Ping2 {
+    @Min(value = 1, message = "Must be at least 1")
+    var ping: Int = 0
+}
