@@ -42,7 +42,7 @@ Content-Type: application/json
 
 > {%
  client.test("Request executed successfully", function() {
-        client.assert(response.status === 500, "Response status is not 500");
+        client.assert(response.status === 400, "Response status is not 400");
     });
  %}
 

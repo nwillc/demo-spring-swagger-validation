@@ -1,6 +1,7 @@
 package com.example.demo
 
 import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,14 +19,9 @@ class Controller {
     fun ping(@Valid @Min(1) @PathVariable("id") id: Int): ResponseEntity<Pong>
             = ResponseEntity(Pong(id), HttpStatus.OK)
 
-    @PostMapping("/ping", produces = ["application/json"], consumes = ["application/json"])
+    @PostMapping("/ping", produces = [MediaType.APPLICATION_JSON_VALUE], consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun ping(@Valid @RequestBody ping: Ping): ResponseEntity<Pong>
             = ResponseEntity(Pong(ping.ping), HttpStatus.OK)
 }
 
 data class Pong(@Min(1) val pong: Int)
-
-data class Ping(
-    @Min(value = 1, message = "Must be at least 1")
-    var ping: Int
-)
